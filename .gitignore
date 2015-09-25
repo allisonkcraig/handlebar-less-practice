@@ -1,0 +1,9 @@
+.DS_Store
+env
+secrets.sh
+*secrets.*
+*.pyc
+*beta-keys*
+beta-keys.py
+*.db
+drafter.db
