@@ -1,6 +1,7 @@
 var compliments = ['You are amazing!','Hello Beautiful!']
 
-	var randPick = Math.floor( Math.random() * compliments.length )
+	var randPick = Math.floor( Math.random() * compliments.length );
+	console.log(randPick)
 
 
 
@@ -10,12 +11,12 @@ var compliments = ['You are amazing!','Hello Beautiful!']
 				title:"Allison's blog",
 				body:compliments[randPick]
 			};
-
+			console.log(data[body])
 
 			var template = Handlebars.compile( $('#entry-template').html() );
 			console.log(template);
 			var html = template(data);
 			console.log(html);
-			$('body').append(template(data))
+			$('body').append(template(data));
 
 	})();

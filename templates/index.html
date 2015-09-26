@@ -2,6 +2,8 @@
 <html>
 <head>
 	<title>Fun With Handlebars</title>
+	<link href='https://fonts.googleapis.com/css?family=Nixie+One|Libre+Baskerville' rel='stylesheet' type='text/css'>
+	<link href='/static/style.css'>
 </head>
 <body>
 
@@ -18,7 +20,27 @@
 	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.js"></script>
 
-	<script src="/static/script.js"></script>
+	<script>
+		var compliments =  ['Hello, you beautiful, rule-breaking moth.',
+							'Hello, you cunning, pliable, chestnut-haired sunfish.',
+							'Hello, you poetic, noble land-mermaid.',
+							'Hello, you beautiful, naive, sophisticated newborn baby.',
+							"Hello, you beautiful tropical fish. You're smart as a whip and you're cool under pressure."];
+
+		var randPick = Math.floor( Math.random() * compliments.length );
+		
+		(function(){
+				var data = {
+					title:"Allison K. Craig",
+					body:compliments[randPick]
+				};
+
+				var template = Handlebars.compile( $('#entry-template').html() );
+				var html = template(data);
+				$('body').append(template(data));
+
+		})();
+	</script>
 
 
 </body>
