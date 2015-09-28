@@ -3,7 +3,7 @@
 <head>
 	<title>Fun With Handlebars</title>
 	<link href='https://fonts.googleapis.com/css?family=Nixie+One|Libre+Baskerville' rel='stylesheet' type='text/css'>
-	<link href='/static/style.css'>
+	<link href='/static/css/style.css'>
 </head>
 <body>
 <h1>Allison's Blog</h1>
@@ -11,27 +11,27 @@
 <script id="subtitle-template" type="text/x-handlebars-template"> <h3>{{compliment}}</h3>
 </script>
 
-	<script id="entry-template" type="text/x-handlebars-template">
-		<div class="entryTitle">
-			<h1>{{title}}</h1>
-			<div class="entryBody">
-				{{body}}
-			</div>
+<script id="entry-template" type="text/x-handlebars-template">
+	<div class="entryTitle">
+		<h3>{{title}}</h3>
+		<div class="entryBody">
+			<p>{{body}}</p>
 		</div>
-	</script>
+	</div>
+	<hr>
+</script>
 
-	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.js"></script>
 
-	<script>
-
+<script>
 
 	(function(){
 		var blogPosts = [
 
 		{title:"TwitchCon!", body:"It was so much fun!!"},
 		{title:"Hackbright", body:"HEYY"},
-		{title:"Allison K. Craig", body:"YO!"},
+		{title:"About Me", body:"I am tall."},
 
 		];
 
@@ -55,20 +55,16 @@
 
 		var data = {
 			compliment: compliments[randPick]
-		};
-
-		
+		};		
 
 		var template = Handlebars.compile( $('#subtitle-template').html() );
 		var html = template(data);
-		console.log(html);
-
 
 		$('#subtitle').append(template(data));
 
-
 	})();
-	</script>
+
+</script>
 
 
 </body>
