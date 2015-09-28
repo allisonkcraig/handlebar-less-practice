@@ -1,71 +1,70 @@
-<!Doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Fun With Handlebars</title>
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.js"></script>
 	<link href='https://fonts.googleapis.com/css?family=Nixie+One|Libre+Baskerville' rel='stylesheet' type='text/css'>
 	<link href='/static/css/style.css'>
 </head>
+
 <body>
-<h1>Allison's Blog</h1>
-<div id="subtitle"></div>
-<script id="subtitle-template" type="text/x-handlebars-template"> <h3>{{compliment}}</h3>
-</script>
 
-<script id="entry-template" type="text/x-handlebars-template">
-	<div class="entryTitle">
-		<h3>{{title}}</h3>
-		<div class="entryBody">
-		<img src={{img}}>
-			<p>{{body}}</p>
+	<h1>Allison's Blog</h1>
+	<div id="subtitle"></div>
+	<script id="subtitle-template" type="text/x-handlebars-template"> <h3>{{compliment}}</h3>
+	</script>
+
+	<script id="entry-template" type="text/x-handlebars-template">
+		<div class="entryTitle">
+			<h3>{{title}}</h3>
+			<div class="entryBody">
+				<img class="entryImg" src={{img}}>
+				<p>{{body}}</p>
+			</div>
 		</div>
-	</div>
-	<hr>
-</script>
+	</script>
 
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.js"></script>
 
-<script>
+	<script>
 
-	(function(){
-		var blogPosts = [
+		(function(){
+			var blogPosts = [
+				{title:"TwitchCon!", body:"It was so much fun!!", img:"http://rlv.zcache.com/grumpy_cat_poster_i_love_math_it_makes_people_cry-r91cc8357f25340ff8fef39c8418b3bf8_wvt_8byvr_512.jpg"},
+				{title:"Hackbright", body:"HEYY", img:"http://rlv.zcache.com/grumpy_cat_poster_i_love_math_it_makes_people_cry-r91cc8357f25340ff8fef39c8418b3bf8_wvt_8byvr_512.jpg"},
+				{title:"About Me", body:"I am tall.", img:"http://rlv.zcache.com/grumpy_cat_poster_i_love_math_it_makes_people_cry-r91cc8357f25340ff8fef39c8418b3bf8_wvt_8byvr_512.jpg"},
+			];
 
-		{title:"TwitchCon!", body:"It was so much fun!!", img:"http://cdn.playbuzz.com/cdn/0079c830-3406-4c05-a5c1-bc43e8f01479/7dd84d70-768b-492b-88f7-a6c70f2db2e9.jpg"},
-		{title:"Hackbright", body:"HEYY", img:"http://cdn.hitfix.com/photos/5621843/Grumpy-Cat.jpg"},
-		{title:"About Me", body:"I am tall.", img:"http://rlv.zcache.com/grumpy_cat_poster_i_love_math_it_makes_people_cry-r91cc8357f25340ff8fef39c8418b3bf8_wvt_8byvr_512.jpg"},
+			var template = Handlebars.compile( $('#entry-template').html() );
+					// var html = template(data);
+					for (var i = 0; i < blogPosts.length; i++){
 
-		];
+						$('body').append(template(blogPosts[i]));
+			};
 
-		var template = Handlebars.compile( $('#entry-template').html() );
-				// var html = template(data);
-				for (var i = 0; i < blogPosts.length; i++){
+		})();
 
-					$('body').append(template(blogPosts[i]));
-		};
+		(function(){
+			var compliments =  ['Hello, you beautiful, rule-breaking moth.',
+				'Hello, you cunning, pliable, chestnut-haired sunfish.',
+				'Hello, you poetic, noble land-mermaid.',
+				'Hello, you beautiful, naive, sophisticated newborn baby.',
+				"Hello, you beautiful tropical fish. You're smart as a whip and you're cool under pressure."];
 
-	})();
+			var randPick = Math.floor( Math.random() * compliments.length );
 
-	(function(){
-		var compliments =  ['Hello, you beautiful, rule-breaking moth.',
-		'Hello, you cunning, pliable, chestnut-haired sunfish.',
-		'Hello, you poetic, noble land-mermaid.',
-		'Hello, you beautiful, naive, sophisticated newborn baby.',
-		"Hello, you beautiful tropical fish. You're smart as a whip and you're cool under pressure."];
+			var data = {
+				compliment: compliments[randPick]
+			};		
 
-		var randPick = Math.floor( Math.random() * compliments.length );
+			var template = Handlebars.compile( $('#subtitle-template').html() );
+			var html = template(data);
 
-		var data = {
-			compliment: compliments[randPick]
-		};		
+			$('#subtitle').append(template(data));
 
-		var template = Handlebars.compile( $('#subtitle-template').html() );
-		var html = template(data);
+		})();
 
-		$('#subtitle').append(template(data));
-
-	})();
-
-</script>
+	</script>
 
 
 </body>
