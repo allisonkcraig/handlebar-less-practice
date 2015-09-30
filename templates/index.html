@@ -55,8 +55,7 @@
 
 		var randPick = Math.floor( Math.random() * compliments.length );
 
-		var data = {
-			compliment: compliments[randPick]};	
+		var data = {compliment: compliments[randPick]};	
 
 		var template = Handlebars.compile( $('#subtitle-template').html() );
 		var html = template(data);
